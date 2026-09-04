@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}
+Delete Trip — VOYAGO
+{% endblock %}
+
+{% block body_class %}
+delete-trip-page
+{% endblock %}
+
+{% block content %}
+
+<section class="delete-trip-section">
+
+    <div class="delete-trip-container">
+
+        <div class="delete-trip-card">
+
+            <!-- ICON -->
+
+            <div class="delete-trip-icon">
+                ×
+            </div>
+
+
+            <!-- HEADER -->
+
+            <span class="section-eyebrow">
+                REMOVE JOURNEY
+            </span>
+
+            <h1>
+                Delete this trip?
+            </h1>
+
+            <p class="delete-trip-message">
+
+                Are you sure you want to delete
+
+                <strong>
+                    {{ trip.name }}
+                </strong>
+
+                ?
+
+                <br>
+
+                This action cannot be undone.
+
+            </p>
+
+
+            <!-- TRIP DETAILS -->
+
+            <div class="delete-trip-details">
+
+                {% if trip.start_date or trip.end_date %}
+
+                    <div class="delete-detail-row">
+
+                        <span>
+                            DATES
+                        </span>
+
+                        <strong>
+
+                            {% if trip.start_date %}
+                                {{ trip.start_date|date:"d M Y" }}
+                            {% endif %}
+
+                            {% if trip.start_date and trip.end_date %}
+                                —
+                            {% endif %}
+
+                            {% if trip.end_date %}
+                                {{ trip.end_date|date:"d M Y" }}
+                            {% endif %}
+
+                        </strong>
+
+                    </div>
+
+                {% endif %}
+
+
+                <div class="delete-detail-row">
+
+                    <span>
+                        DESTINATIONS
+                    </span>
+
+                    <strong>
+                        {{ trip.places.count }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <form
+                method="POST"
+                class="delete-trip-form"
+            >
+
+                {% csrf_token %}
+
+                <a
+                    href="{% url 'my_trips' %}"
+                    class="delete-cancel-button"
+                >
+                    Keep Trip
+                </a>
+
+                <button
+                    type="submit"
+                    class="delete-confirm-button"
+                >
+                    Delete Trip
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}About VOYAGO — Travel Differently{% endblock %}
+
+{% block content %}
+
+<section class="about-page-hero">
+
+    <div class="container">
+
+        <div class="about-hero-grid">
+
+            <div class="about-hero-left">
+
+                <div class="section-label">
+                    05 — ABOUT VOYAGO
+                </div>
+
+                <h1>
+                    The world is
+                    <em>bigger</em> than your
+                    routine.
+                </h1>
+
+            </div>
+
+            <div class="about-hero-right">
+
+                <h2>
+                    VOYAGO was created for people who
+                    believe the best memories begin with a
+                    little curiosity.
+                </h2>
+
+                <p>
+                    We make travel discovery simple, beautiful
+                    and personal — so you can spend less time
+                    planning and more time experiencing.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about-story">
+
+    <div class="container">
+
+        <div class="about-story-grid">
+
+            <div class="about-story-heading">
+
+                <div class="section-label">
+                    THE IDEA
+                </div>
+
+                <h2>
+                    Go somewhere
+                    <em>worth remembering.</em>
+                </h2>
+
+            </div>
+
+            <div class="about-story-copy">
+
+                <p class="large-copy">
+                    We believe the best journeys are the ones
+                    that become stories.
+                </p>
+
+                <p>
+                    VOYAGO is a destination discovery platform
+                    designed to help curious travelers find
+                    places that inspire them.
+                </p>
+
+                <p>
+                    From quiet beaches and dramatic mountains
+                    to timeless cities and hidden corners,
+                    we bring destinations together in one
+                    beautifully simple experience.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about-values">
+
+    <div class="container">
+
+        <div class="section-label">
+            WHAT WE BELIEVE
+        </div>
+
+        <h2 class="section-title">
+            A different way to
+            <em>see the world.</em>
+        </h2>
+
+        <div class="values-grid">
+
+            <article class="value-card">
+                <span>01</span>
+
+                <h3>Discover</h3>
+
+                <p>
+                    Find destinations beyond the obvious
+                    and discover places that feel uniquely yours.
+                </p>
+            </article>
+
+            <article class="value-card">
+                <span>02</span>
+
+                <h3>Experience</h3>
+
+                <p>
+                    Travel for the moments, cultures, people
+                    and memories that make every journey meaningful.
+                </p>
+            </article>
+
+            <article class="value-card">
+                <span>03</span>
+
+                <h3>Remember</h3>
+
+                <p>
+                    Because the places we visit eventually
+                    become part of the stories we tell.
+                </p>
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about-final">
+
+    <div class="container">
+
+        <div class="about-final-content">
+
+            <div class="section-label">
+                YOUR JOURNEY STARTS HERE
+            </div>
+
+            <h2>
+                Somewhere is
+                <em>waiting.</em>
+            </h2>
+
+            <a href="{% url 'explore' %}" class="primary-button">
+                Explore destinations
+                <span>↗</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

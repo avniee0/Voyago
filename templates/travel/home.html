@@ -1,0 +1,481 @@
+{% extends "base.html" %}
+
+{% block title %}
+VOYAGO — Discover. Plan. Go.
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="hero">
+
+    <div class="hero-background">
+
+        <div class="hero-overlay"></div>
+
+    </div>
+
+    <div class="hero-content">
+
+        <div class="hero-eyebrow reveal">
+            <span></span>
+            YOUR JOURNEY STARTS HERE
+        </div>
+
+        <h1 class="hero-title reveal">
+            Go somewhere
+            <em>unforgettable.</em>
+        </h1>
+
+        <p class="hero-description reveal">
+            Discover extraordinary destinations,
+            build meaningful itineraries, and turn
+            your next trip into a story worth telling.
+        </p>
+
+        <div class="hero-actions reveal">
+
+            <a
+                href="#destinations"
+                class="primary-button"
+            >
+                Explore Destinations
+                <span>↗</span>
+            </a>
+
+            <a
+                href="#journey"
+                class="text-button"
+            >
+                Plan your journey
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-bottom">
+
+        <div class="hero-scroll">
+            <span class="scroll-line"></span>
+            SCROLL TO EXPLORE
+        </div>
+
+        <div class="hero-location">
+            <span>✦</span>
+            EVERYWHERE IS WAITING
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRO
+====================================================== -->
+
+<section class="intro section">
+
+    <div class="container">
+
+        <div class="section-label reveal">
+            01 — THE VOYAGO WAY
+        </div>
+
+        <div class="intro-grid">
+
+            <h2 class="section-title reveal">
+                Travel isn't about
+                <em>where you go.</em>
+                It's about how
+                you remember it.
+            </h2>
+
+            <div class="intro-copy reveal">
+
+                <p>
+                    VOYAGO brings discovery and planning
+                    together in one beautiful place.
+                </p>
+
+                <p>
+                    Find destinations that inspire you,
+                    save the places you love, and create
+                    journeys designed around your way of
+                    travelling.
+                </p>
+
+                <a href="#destinations" class="arrow-link">
+                    Explore the world
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DESTINATIONS
+====================================================== -->
+
+<section
+    class="destinations section"
+    id="destinations"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-label reveal">
+                02 — PLACES TO GO
+            </div>
+
+            <div class="heading-row">
+
+                <h2 class="section-title reveal">
+                    Find your
+                    <em>next somewhere.</em>
+                </h2>
+
+                <p class="heading-description reveal">
+                    From quiet escapes to cities that
+                    never sleep, discover places made
+                    for your kind of adventure.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        {% if destinations %}
+
+        <div class="destination-grid">
+
+            {% for destination in destinations %}
+
+            <article
+                class="destination-card reveal
+                {% if forloop.counter == 1 %}
+                destination-large
+                {% endif %}"
+            >
+
+                <div class="destination-image">
+
+                    {% if destination.image %}
+
+                        <img
+                            src="{{ destination.image.url }}"
+                            alt="{{ destination.name }}"
+                        >
+
+                    {% else %}
+
+                        <div class="destination-placeholder">
+                            <span>VOYAGO</span>
+                        </div>
+
+                    {% endif %}
+
+                    <div class="image-overlay"></div>
+
+                    <span class="destination-category">
+                        {{ destination.get_category_display }}
+                    </span>
+
+                    <button
+                        class="favorite-button"
+                        aria-label="Save destination"
+                    >
+                        ♡
+                    </button>
+
+                    <div class="destination-info">
+
+                        <div>
+
+                            <h3>
+                                {{ destination.name }}
+                            </h3>
+
+                            <p>
+                                {{ destination.country }}
+                            </p>
+
+                        </div>
+
+                        <span class="destination-arrow">
+                            ↗
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-destinations">
+
+            <span>✦</span>
+
+            <h3>
+                Your next adventure is waiting.
+            </h3>
+
+            <p>
+                Destinations will appear here once
+                they are added through the admin panel.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     JOURNEY
+====================================================== -->
+
+<section
+    class="journey section"
+    id="journey"
+>
+
+    <div class="container">
+
+        <div class="journey-card">
+
+            <div class="journey-content">
+
+                <div class="section-label">
+                    03 — YOUR JOURNEY
+                </div>
+
+                <h2>
+                    Don't just
+                    <em>visit.</em>
+                    Experience.
+                </h2>
+
+                <p>
+                    Create your own itinerary, save
+                    destinations you love, and organize
+                    every part of your journey in one place.
+                </p>
+
+                <a href="#" class="primary-button light">
+                    Start Planning
+                    <span>↗</span>
+                </a>
+
+            </div>
+
+            <div class="journey-decoration">
+
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+
+                <div class="journey-compass">
+                    ✦
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURES
+====================================================== -->
+
+<section class="features section">
+
+    <div class="container">
+
+        <div class="section-label reveal">
+            04 — WHY VOYAGO
+        </div>
+
+        <div class="features-grid">
+
+            <div class="feature reveal">
+
+                <span class="feature-number">
+                    01
+                </span>
+
+                <h3>
+                    Discover
+                </h3>
+
+                <p>
+                    Explore destinations curated
+                    for curious travellers.
+                </p>
+
+            </div>
+
+            <div class="feature reveal">
+
+                <span class="feature-number">
+                    02
+                </span>
+
+                <h3>
+                    Save
+                </h3>
+
+                <p>
+                    Keep your favourite places
+                    together for your next adventure.
+                </p>
+
+            </div>
+
+            <div class="feature reveal">
+
+                <span class="feature-number">
+                    03
+                </span>
+
+                <h3>
+                    Plan
+                </h3>
+
+                <p>
+                    Turn inspiration into an itinerary
+                    that's uniquely yours.
+                </p>
+
+            </div>
+
+            <div class="feature reveal">
+
+                <span class="feature-number">
+                    04
+                </span>
+
+                <h3>
+                    Remember
+                </h3>
+
+                <p>
+                    Build journeys around experiences
+                    you'll actually remember.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+====================================================== -->
+
+<section
+    class="about section"
+    id="about"
+>
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div class="about-title reveal">
+
+                <div class="section-label">
+                    05 — ABOUT VOYAGO
+                </div>
+
+                <h2>
+                    The world is
+                    <em>bigger</em>
+                    than your routine.
+                </h2>
+
+            </div>
+
+            <div class="about-copy reveal">
+
+                <p class="large-copy">
+                    VOYAGO was created for people who
+                    believe the best memories begin
+                    with a little curiosity.
+                </p>
+
+                <p>
+                    We make travel discovery simple,
+                    beautiful and personal — so you can
+                    spend less time planning and more
+                    time experiencing.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+====================================================== -->
+
+<section class="final-cta">
+
+    <div class="cta-overlay"></div>
+
+    <div class="cta-content reveal">
+
+        <div class="section-label">
+            READY WHEN YOU ARE
+        </div>
+
+        <h2>
+            Somewhere
+            <em>is waiting.</em>
+        </h2>
+
+        <a href="#destinations" class="primary-button light">
+            Explore VOYAGO
+            <span>↗</span>
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

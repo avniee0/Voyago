@@ -1,0 +1,371 @@
+{% extends "base.html" %}
+
+{% block title %}
+Travel Stories — VOYAGO
+{% endblock %}
+
+{% block body_class %}
+stories-page
+{% endblock %}
+
+
+{% block content %}
+
+<section class="stories-page">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="stories-hero">
+
+        <div class="stories-hero-inner">
+
+            <span class="section-eyebrow">
+                TRAVEL STORIES
+            </span>
+
+            <h1>
+                Stories from<br>
+                the road.
+            </h1>
+
+            <p>
+                Discover journeys, places and moments that
+                make travelling unforgettable.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STORIES
+    ====================================================== -->
+
+    <section class="stories-section">
+
+        <div class="stories-container">
+
+            <div class="stories-grid">
+
+
+                <!-- STORY 1 -->
+
+                <article class="story-card">
+
+                    <div class="story-image-wrapper">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85"
+                            alt="Bali"
+                            class="story-image"
+                        >
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span class="story-category">
+                            ISLAND ESCAPE
+                        </span>
+
+                        <h2>
+                            Finding slow mornings in Bali
+                        </h2>
+
+                        <p>
+                            From peaceful beaches to tropical
+                            landscapes, Bali invites you to slow
+                            down and enjoy the journey.
+                        </p>
+
+
+                        <div class="story-footer">
+
+                            <span class="story-location">
+                                Bali, Indonesia
+                            </span>
+
+                            <a
+                                href="{% url 'explore' %}"
+                                class="story-link"
+                            >
+                                Explore →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- STORY 2 -->
+
+                <article class="story-card">
+
+                    <div class="story-image-wrapper">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1200&q=85"
+                            alt="Manali mountains"
+                            class="story-image"
+                        >
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span class="story-category">
+                            MOUNTAIN ESCAPE
+                        </span>
+
+                        <h2>
+                            Chasing mountain air in Manali
+                        </h2>
+
+                        <p>
+                            A journey through mountain roads,
+                            peaceful valleys and the beauty of
+                            Himachal Pradesh.
+                        </p>
+
+
+                        <div class="story-footer">
+
+                            <span class="story-location">
+                                Manali, India
+                            </span>
+
+                            <a
+                                href="{% url 'explore' %}"
+                                class="story-link"
+                            >
+                                Explore →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- STORY 3 -->
+
+                <article class="story-card">
+
+                    <div class="story-image-wrapper">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=85"
+                            alt="Paris"
+                            class="story-image"
+                        >
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span class="story-category">
+                            CITY ESCAPE
+                        </span>
+
+                        <h2>
+                            Paris, one neighbourhood at a time
+                        </h2>
+
+                        <p>
+                            Wander beyond the famous landmarks
+                            and discover the quieter side of Paris.
+                        </p>
+
+
+                        <div class="story-footer">
+
+                            <span class="story-location">
+                                Paris, France
+                            </span>
+
+                            <a
+                                href="{% url 'explore' %}"
+                                class="story-link"
+                            >
+                                Explore →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- STORY 4 -->
+
+                <article class="story-card">
+
+                    <div class="story-image-wrapper">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=85"
+                            alt="Santorini"
+                            class="story-image"
+                        >
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span class="story-category">
+                            MEDITERRANEAN
+                        </span>
+
+                        <h2>
+                            Blue horizons in Santorini
+                        </h2>
+
+                        <p>
+                            Whitewashed streets, blue rooftops
+                            and unforgettable sunsets by the sea.
+                        </p>
+
+
+                        <div class="story-footer">
+
+                            <span class="story-location">
+                                Santorini, Greece
+                            </span>
+
+                            <a
+                                href="{% url 'explore' %}"
+                                class="story-link"
+                            >
+                                Explore →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- STORY 5 -->
+
+                <article class="story-card">
+
+                    <div class="story-image-wrapper">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=85"
+                            alt="Swiss Alps"
+                            class="story-image"
+                        >
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span class="story-category">
+                            MOUNTAIN JOURNEY
+                        </span>
+
+                        <h2>
+                            A week beneath the Swiss Alps
+                        </h2>
+
+                        <p>
+                            Crisp mountain air, quiet villages and
+                            landscapes that feel almost unreal.
+                        </p>
+
+
+                        <div class="story-footer">
+
+                            <span class="story-location">
+                                Swiss Alps, Switzerland
+                            </span>
+
+                            <a
+                                href="{% url 'explore' %}"
+                                class="story-link"
+                            >
+                                Explore →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- STORY 6 -->
+
+                <article class="story-card">
+
+                    <div class="story-image-wrapper">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85"
+                            alt="Kyoto"
+                            class="story-image"
+                        >
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span class="story-category">
+                            CULTURAL JOURNEY
+                        </span>
+
+                        <h2>
+                            Slow days in Kyoto
+                        </h2>
+
+                        <p>
+                            Ancient streets, peaceful temples and
+                            a city where tradition meets everyday life.
+                        </p>
+
+
+                        <div class="story-footer">
+
+                            <span class="story-location">
+                                Kyoto, Japan
+                            </span>
+
+                            <a
+                                href="{% url 'explore' %}"
+                                class="story-link"
+                            >
+                                Explore →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

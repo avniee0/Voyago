@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ destination.name }} — VOYAGO
+{% endblock %}
+
+{% block content %}
+
+<section class="destination-detail">
+
+    <!-- HERO IMAGE -->
+
+    <div class="destination-detail-image">
+
+        {% if destination.image %}
+
+            <img
+                src="{{ destination.image.url }}"
+                alt="{{ destination.name }}"
+            >
+
+        {% else %}
+
+            <div class="destination-detail-placeholder">
+                VOYAGO
+            </div>
+
+        {% endif %}
+
+        <div class="destination-detail-overlay"></div>
+
+        <div class="destination-detail-heading">
+
+            <span>
+                {{ destination.get_category_display }}
+            </span>
+
+            <h1>
+                {{ destination.name }}
+            </h1>
+
+            <p>
+                {{ destination.country }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <section class="destination-detail-content">
+
+        <div class="container">
+
+            <div class="destination-detail-main">
+
+                <div class="section-label">
+                    VOYAGO / DESTINATION
+                </div>
+
+                <h2>
+                    Your next
+                    <em>somewhere.</em>
+                </h2>
+
+                <p>
+                    {{ destination.description }}
+                </p>
+
+
+                <!-- DETAILS -->
+
+                <div class="destination-detail-meta">
+
+                    <div class="detail-meta-card">
+
+                        <span>
+                            BEST TIME TO VISIT
+                        </span>
+
+                        <strong>
+                            {{ destination.best_time }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-meta-card">
+
+                        <span>
+                            ESTIMATED BUDGET
+                        </span>
+
+                        <strong>
+                            {{ destination.budget }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="{% url 'explore' %}"
+                    class="arrow-link"
+                >
+                    <span>←</span>
+                    Back to explore
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ trip.name }} — VOYAGO
+{% endblock %}
+
+
+{% block body_class %}
+trip-detail-page
+{% endblock %}
+
+
+{% block content %}
+
+<section class="trip-detail-section">
+
+    <div class="trip-detail-container">
+
+
+        <!-- =====================================================
+             HEADER
+        ====================================================== -->
+
+        <div class="trip-detail-header">
+
+            <span class="section-eyebrow">
+                YOUR JOURNEY
+            </span>
+
+            <h1>
+                {{ trip.name }}
+            </h1>
+
+            {% if trip.start_date or trip.end_date %}
+
+                <div class="trip-detail-dates">
+
+                    {% if trip.start_date %}
+
+                        <span>
+                            {{ trip.start_date|date:"d M Y" }}
+                        </span>
+
+                    {% endif %}
+
+
+                    {% if trip.start_date and trip.end_date %}
+
+                        <span>
+                            —
+                        </span>
+
+                    {% endif %}
+
+
+                    {% if trip.end_date %}
+
+                        <span>
+                            {{ trip.end_date|date:"d M Y" }}
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- =====================================================
+             ITINERARY
+        ====================================================== -->
+
+        <div class="trip-itinerary">
+
+            <div class="trip-itinerary-header">
+
+                <div>
+
+                    <span class="destination-label">
+                        YOUR ITINERARY
+                    </span>
+
+                    <h2>
+                        Places You'll Visit
+                    </h2>
+
+                </div>
+
+                <span class="trip-place-count">
+
+                    {{ trip.places.count }}
+
+                    {% if trip.places.count == 1 %}
+                        destination
+                    {% else %}
+                        destinations
+                    {% endif %}
+
+                </span>
+
+            </div>
+
+
+            {% for place in trip.places.all %}
+
+                <article class="itinerary-item">
+
+
+                    <!-- DAY -->
+
+                    <div class="itinerary-day">
+
+                        <span>
+                            DAY
+                        </span>
+
+                        <strong>
+                            {{ place.day_number }}
+                        </strong>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+
+                    {% if place.destination.image %}
+
+                        <img
+                            src="{{ place.destination.image.url }}"
+                            alt="{{ place.destination.name }}"
+                            class="itinerary-image"
+                        >
+
+                    {% endif %}
+
+
+                    <!-- DETAILS -->
+
+                    <div class="itinerary-details">
+
+                        <span class="destination-label">
+                            DESTINATION
+                        </span>
+
+                        <h3>
+                            {{ place.destination.name }}
+                        </h3>
+
+                        <p>
+                            {{ place.destination.country }}
+                        </p>
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <div class="empty-itinerary">
+
+                    <p>
+                        No destinations have been added to this trip yet.
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- =====================================================
+             ACTIONS
+        ====================================================== -->
+
+        <div class="trip-detail-actions">
+
+            <a
+                href="{% url 'my_trips' %}"
+                class="trip-detail-back"
+            >
+                ← Back to My Trips
+            </a>
+
+
+            <div class="trip-detail-buttons">
+
+                <a
+                    href="{% url 'edit_trip' trip.id %}"
+                    class="trip-edit-button"
+                >
+                    Edit Trip
+                </a>
+
+                <a
+                    href="{% url 'delete_trip' trip.id %}"
+                    class="trip-delete-button"
+                >
+                    Delete Trip
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

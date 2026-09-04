@@ -1,0 +1,459 @@
+{% extends "base.html" %}
+
+{% block title %}Explore Destinations — VOYAGO{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     EXPLORE HERO
+========================================================= -->
+
+<section class="explore-hero">
+
+    <div class="container">
+
+        <div class="section-label">
+            VOYAGO / EXPLORE
+        </div>
+
+        <h1>
+            Find your next
+            <em>somewhere.</em>
+        </h1>
+
+        <p>
+            Search destinations, discover new places,
+            and find the journey that feels right for you.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXPLORE SECTION
+========================================================= -->
+
+<section class="explore-section">
+
+    <div class="container">
+
+        <!-- CONTROLS -->
+
+        <div class="explore-controls">
+
+            <div class="search-box">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="destinationSearch"
+                    placeholder="Search destinations..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="category-filters">
+
+                <button
+                    class="filter-button active"
+                    type="button"
+                    data-category="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-category="beach"
+                >
+                    Beach
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-category="mountain"
+                >
+                    Mountain
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-category="city"
+                >
+                    City
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-category="heritage"
+                >
+                    Heritage
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-category="nature"
+                >
+                    Nature
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DESTINATION GRID
+        ================================================== -->
+
+        <div
+            class="explore-grid"
+            id="destinationGrid"
+        >
+
+            {% for destination in destinations %}
+
+            <article
+                class="explore-card"
+                data-name="{{ destination.name|lower }}"
+                data-country="{{ destination.country|lower }}"
+                data-category="{{ destination.category|lower }}"
+            >
+
+                <!-- IMAGE -->
+
+                <div class="explore-image">
+
+                    {% if destination.image %}
+
+                        <img
+                            src="{{ destination.image.url }}"
+                            alt="{{ destination.name }}"
+                        >
+
+                    {% else %}
+
+                        <div class="destination-placeholder">
+                            VOYAGO
+                        </div>
+
+                    {% endif %}
+
+
+                    <!-- FAVORITE BUTTON -->
+
+                    <button
+                        class="favorite-button"
+                        type="button"
+                        aria-label="Add {{ destination.name }} to favorites"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+                     CLICKABLE DESTINATION CONTENT
+                ================================================== -->
+
+                <a
+                    href="{% url 'destination_detail' destination.pk %}"
+                    class="explore-card-link"
+                    aria-label="Explore {{ destination.name }}"
+                >
+
+                    <div class="explore-info">
+
+                        <div>
+
+                            <span>
+                                {{ destination.get_category_display }}
+                            </span>
+
+                            <h2>
+                                {{ destination.name }}
+                            </h2>
+
+                            <p>
+                                {{ destination.country }}
+                            </p>
+
+                        </div>
+
+
+                        <div class="explore-arrow">
+                            ↗
+                        </div>
+
+                    </div>
+
+
+                    <div class="explore-details">
+
+                        {% if destination.description %}
+
+                        <p>
+                            {{ destination.description }}
+                        </p>
+
+                        {% endif %}
+
+
+                        <div class="destination-meta">
+
+                            {% if destination.best_time %}
+
+                            <span>
+
+                                <strong>
+                                    Best time
+                                </strong>
+
+                                {{ destination.best_time }}
+
+                            </span>
+
+                            {% endif %}
+
+
+                            {% if destination.budget %}
+
+                            <span>
+
+                                <strong>
+                                    Budget
+                                </strong>
+
+                                {{ destination.budget }}
+
+                            </span>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+            {% empty %}
+
+            <!-- EMPTY STATE -->
+
+            <div class="empty-destinations">
+
+                <span>✦</span>
+
+                <h3>
+                    No destinations yet.
+                </h3>
+
+                <p>
+                    Add destinations through the Django
+                    admin panel.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- =================================================
+             NO SEARCH RESULTS
+        ================================================== -->
+
+        <div
+            class="no-results"
+            id="noResults"
+        >
+            No destinations match your search.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXPLORE JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput =
+        document.getElementById("destinationSearch");
+
+    const cards =
+        document.querySelectorAll(".explore-card");
+
+    const filterButtons =
+        document.querySelectorAll(".filter-button");
+
+    const noResults =
+        document.getElementById("noResults");
+
+
+    let activeCategory = "all";
+
+
+    function filterDestinations() {
+
+        const searchTerm =
+            searchInput.value.toLowerCase().trim();
+
+        let visibleCount = 0;
+
+
+        cards.forEach(function (card) {
+
+            const name =
+                card.dataset.name || "";
+
+            const country =
+                card.dataset.country || "";
+
+            const category =
+                card.dataset.category || "";
+
+
+            const matchesSearch =
+                name.includes(searchTerm) ||
+                country.includes(searchTerm);
+
+
+            const matchesCategory =
+                activeCategory === "all" ||
+                category === activeCategory;
+
+
+            if (
+                matchesSearch &&
+                matchesCategory
+            ) {
+
+                card.style.display = "";
+
+                visibleCount++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        if (visibleCount === 0 && cards.length > 0) {
+
+            noResults.style.display = "block";
+
+        } else {
+
+            noResults.style.display = "none";
+
+        }
+
+    }
+
+
+    /* SEARCH */
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "input",
+            filterDestinations
+        );
+
+    }
+
+
+    /* CATEGORY FILTER */
+
+    filterButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                filterButtons.forEach(function (btn) {
+
+                    btn.classList.remove("active");
+
+                });
+
+
+                button.classList.add("active");
+
+
+                activeCategory =
+                    button.dataset.category;
+
+
+                filterDestinations();
+
+            }
+        );
+
+    });
+
+
+    /* FAVORITES */
+
+    const favoriteButtons =
+        document.querySelectorAll(".favorite-button");
+
+
+    favoriteButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                button.classList.toggle("saved");
+
+
+                if (button.classList.contains("saved")) {
+
+                    button.innerHTML = "♥";
+
+                } else {
+
+                    button.innerHTML = "♡";
+
+                }
+
+            }
+        );
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Plan Your Journey — VOYAGO
+{% endblock %}
+
+{% block body_class %}
+plan-page
+{% endblock %}
+
+{% block content %}
+
+<section class="plan-hero">
+
+    <div class="plan-hero-content">
+
+        <span class="eyebrow">
+            YOUR JOURNEY STARTS HERE
+        </span>
+
+        <h1>
+            Plan a journey<br>
+            <em>worth remembering.</em>
+        </h1>
+
+        <p>
+            Choose your places, set your dates,
+            and turn your travel ideas into a journey.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="trip-planner">
+
+    <div class="planner-header">
+
+        <div>
+            <span class="eyebrow">
+                CREATE YOUR TRIP
+            </span>
+
+            <h2>
+                Where will you go?
+            </h2>
+        </div>
+
+        <span class="planner-step">
+            01 / 02
+        </span>
+
+    </div>
+
+
+    <form
+        method="POST"
+        class="planner-form"
+    >
+
+        {% csrf_token %}
+
+
+        <!-- TRIP INFORMATION -->
+
+        <div class="trip-info-grid">
+
+            <div class="form-group">
+
+                <label for="trip_name">
+                    Trip Name
+                </label>
+
+                <input
+                    type="text"
+                    id="trip_name"
+                    name="trip_name"
+                    placeholder="e.g. Summer Escape"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="start_date">
+                    Start Date
+                </label>
+
+                <input
+                    type="date"
+                    id="start_date"
+                    name="start_date"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="end_date">
+                    End Date
+                </label>
+
+                <input
+                    type="date"
+                    id="end_date"
+                    name="end_date"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- DESTINATIONS -->
+
+        <div class="destination-selector">
+
+            <div class="selector-heading">
+
+                <div>
+                    <span class="eyebrow">
+                        CHOOSE YOUR PLACES
+                    </span>
+
+                    <h3>
+                        Add destinations to your journey
+                    </h3>
+                </div>
+
+                <span id="selectedCount">
+                    0 selected
+                </span>
+
+            </div>
+
+
+            <div class="destination-grid">
+
+                {% for destination in destinations %}
+
+                <label
+                    class="planner-destination"
+                    for="destination-{{ destination.id }}"
+                >
+
+                    <input
+                        type="checkbox"
+                        name="destinations"
+                        value="{{ destination.id }}"
+                        id="destination-{{ destination.id }}"
+                    >
+
+                    <div class="destination-card-image">
+
+                        {% if destination.image %}
+
+                            <img
+                                src="{{ destination.image.url }}"
+                                alt="{{ destination.name }}"
+                            >
+
+                        {% else %}
+
+                            <div class="image-placeholder">
+                                VOYAGO
+                            </div>
+
+                        {% endif %}
+
+                        <span class="selection-mark">
+                            ✓
+                        </span>
+
+                    </div>
+
+
+                    <div class="planner-card-content">
+
+                        <span class="planner-category">
+                            {{ destination.get_category_display }}
+                        </span>
+
+                        <h4>
+                            {{ destination.name }}
+                        </h4>
+
+                        <p>
+                            {{ destination.country }}
+                        </p>
+
+                    </div>
+
+                </label>
+
+                {% empty %}
+
+                    <div class="empty-destinations">
+
+                        <h3>
+                            No destinations yet.
+                        </h3>
+
+                        <p>
+                            Add destinations from the Django admin
+                            before creating your journey.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <div class="planner-submit">
+
+            <div>
+
+                <span>
+                    Ready to explore?
+                </span>
+
+                <p>
+                    Your selected destinations will become
+                    the first stops on your journey.
+                </p>
+
+            </div>
+
+            <button
+                type="submit"
+                class="plan-submit-btn"
+            >
+                Create My Journey
+                <span>→</span>
+            </button>
+
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const checkboxes = document.querySelectorAll(
+        'input[name="destinations"]'
+    );
+
+    const selectedCount =
+        document.getElementById("selectedCount");
+
+
+    function updateCount() {
+
+        const selected =
+            document.querySelectorAll(
+                'input[name="destinations"]:checked'
+            ).length;
+
+        selectedCount.textContent =
+            selected + (selected === 1 ? " selected" : " selected");
+    }
+
+
+    checkboxes.forEach(function (checkbox) {
+
+        checkbox.addEventListener(
+            "change",
+            updateCount
+        );
+
+    });
+
+
+    updateCount();
+
+});
+
+</script>
+
+{% endblock %}

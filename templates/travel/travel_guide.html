@@ -1,0 +1,285 @@
+{% extends "base.html" %}
+
+{% block title %}
+Travel Guide — VOYAGO
+{% endblock %}
+
+{% block body_class %}
+travel-guide-page
+{% endblock %}
+
+
+{% block content %}
+
+<section class="travel-guide-page">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="guide-hero">
+
+        <div class="guide-hero-inner">
+
+            <span class="section-eyebrow">
+                TRAVEL GUIDE
+            </span>
+
+            <h1>
+                Travel smarter.<br>
+                <em>Go further.</em>
+            </h1>
+
+            <p>
+                Practical inspiration to help you choose where
+                to go, when to visit and how to make the most
+                of every journey.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GUIDE CARDS
+    ====================================================== -->
+
+    <section class="guide-section">
+
+        <div class="guide-container">
+
+            <div class="guide-grid">
+
+
+                <!-- 01 -->
+
+                <article class="guide-card">
+
+                    <span class="guide-number">
+                        01
+                    </span>
+
+                    <span class="guide-category">
+                        BEFORE YOU GO
+                    </span>
+
+                    <h2>
+                        Choosing the right destination
+                    </h2>
+
+                    <p>
+                        Find a destination that matches your
+                        travel style, budget and the kind of
+                        experience you want.
+                    </p>
+
+                    <a
+                        href="{% url 'explore' %}"
+                        class="guide-arrow"
+                    >
+                        Explore destinations →
+                    </a>
+
+                </article>
+
+
+                <!-- 02 -->
+
+                <article class="guide-card">
+
+                    <span class="guide-number">
+                        02
+                    </span>
+
+                    <span class="guide-category">
+                        PLANNING
+                    </span>
+
+                    <h2>
+                        When should you travel?
+                    </h2>
+
+                    <p>
+                        Understand seasons, weather and the
+                        best time to experience different places.
+                    </p>
+
+                    <a
+                        href="{% url 'explore' %}"
+                        class="guide-arrow"
+                    >
+                        Find your destination →
+                    </a>
+
+                </article>
+
+
+                <!-- 03 -->
+
+                <article class="guide-card">
+
+                    <span class="guide-number">
+                        03
+                    </span>
+
+                    <span class="guide-category">
+                        BUDGET
+                    </span>
+
+                    <h2>
+                        Planning a trip that fits your budget
+                    </h2>
+
+                    <p>
+                        Build a journey around your budget while
+                        leaving room for the experiences that matter.
+                    </p>
+
+                    <a
+                        href="{% url 'plan_trip' %}"
+                        class="guide-arrow"
+                    >
+                        Plan your journey →
+                    </a>
+
+                </article>
+
+
+                <!-- 04 -->
+
+                <article class="guide-card">
+
+                    <span class="guide-number">
+                        04
+                    </span>
+
+                    <span class="guide-category">
+                        PACKING
+                    </span>
+
+                    <h2>
+                        Pack for the journey, not the suitcase
+                    </h2>
+
+                    <p>
+                        Keep things simple and pack according to
+                        your destination, weather and activities.
+                    </p>
+
+                    <a
+                        href="{% url 'explore' %}"
+                        class="guide-arrow"
+                    >
+                        Explore places →
+                    </a>
+
+                </article>
+
+
+                <!-- 05 -->
+
+                <article class="guide-card">
+
+                    <span class="guide-number">
+                        05
+                    </span>
+
+                    <span class="guide-category">
+                        EXPERIENCES
+                    </span>
+
+                    <h2>
+                        Leave room for the unexpected
+                    </h2>
+
+                    <p>
+                        The best travel memories often come from
+                        moments that weren't part of the original plan.
+                    </p>
+
+                    <a
+                        href="{% url 'travel_stories' %}"
+                        class="guide-arrow"
+                    >
+                        Read travel stories →
+                    </a>
+
+                </article>
+
+
+                <!-- 06 -->
+
+                <article class="guide-card">
+
+                    <span class="guide-number">
+                        06
+                    </span>
+
+                    <span class="guide-category">
+                        YOUR JOURNEY
+                    </span>
+
+                    <h2>
+                        Turn inspiration into a real trip
+                    </h2>
+
+                    <p>
+                        Choose your destinations and create your
+                        own personalised journey with VOYAGO.
+                    </p>
+
+                    <a
+                        href="{% url 'plan_trip' %}"
+                        class="guide-arrow"
+                    >
+                        Start planning →
+                    </a>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GUIDE CTA
+    ====================================================== -->
+
+    <section class="guide-destinations">
+
+        <div class="guide-destinations-inner">
+
+            <span class="section-eyebrow">
+                READY TO GO?
+            </span>
+
+            <h2>
+                Your next journey<br>
+                starts here.
+            </h2>
+
+            <p>
+                Explore destinations and start building
+                a journey that feels completely yours.
+            </p>
+
+            <a
+                href="{% url 'plan_trip' %}"
+                class="trip-button"
+            >
+                Plan a Journey
+            </a>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

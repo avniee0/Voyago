@@ -1,0 +1,387 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="VOYAGO — Discover destinations, plan unforgettable journeys."
+    >
+
+    <title>
+        {% block title %}
+            VOYAGO — Discover. Plan. Go.
+        {% endblock %}
+    </title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+
+<body class="{% block body_class %}{% endblock %}">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header
+    class="site-header"
+    id="siteHeader"
+>
+
+    <nav class="navbar">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="{% url 'home' %}"
+            class="logo"
+        >
+            VOYAGO<span>.</span>
+        </a>
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+
+        <div
+            class="nav-links"
+            id="navLinks"
+        >
+
+            <!-- HOME -->
+
+            <a
+                href="{% url 'home' %}"
+                class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+            >
+                Home
+            </a>
+
+
+            <!-- EXPLORE -->
+
+            <a
+                href="{% url 'explore' %}"
+                class="nav-link {% if request.resolver_match.url_name == 'explore' %}active{% endif %}"
+            >
+                Explore
+            </a>
+
+
+            <!-- PLAN A JOURNEY -->
+
+            <a
+                href="{% url 'plan_trip' %}"
+                class="nav-link {% if request.resolver_match.url_name == 'plan_trip' %}active{% endif %}"
+            >
+                Plan a Journey
+            </a>
+
+
+            <!-- ABOUT -->
+
+            <a
+                href="{% url 'about' %}"
+                class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+            >
+                About
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             NAV ACTIONS
+        ================================================== -->
+
+        <div class="nav-actions">
+
+            {% if user.is_authenticated %}
+
+                <!-- MY TRIPS -->
+
+                <a
+                    href="{% url 'my_trips' %}"
+                    class="login-link {% if request.resolver_match.url_name == 'my_trips' or request.resolver_match.url_name == 'trip_detail' or request.resolver_match.url_name == 'edit_trip' or request.resolver_match.url_name == 'delete_trip' %}active{% endif %}"
+                >
+                    My Trips
+                </a>
+
+
+                <!-- LOG OUT -->
+
+                <a
+                    href="{% url 'logout' %}"
+                    class="nav-cta"
+                >
+                    Log Out
+                </a>
+
+            {% else %}
+
+                <!-- SIGN IN -->
+
+                <a
+                    href="{% url 'login' %}"
+                    class="login-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}"
+                >
+                    Sign In
+                </a>
+
+
+                <!-- GET STARTED -->
+
+                <a
+                    href="{% url 'register' %}"
+                    class="nav-cta {% if request.resolver_match.url_name == 'register' %}active{% endif %}"
+                >
+                    Get Started
+                </a>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+            aria-label="Toggle navigation"
+            type="button"
+        >
+
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-main">
+
+
+        <!-- =================================================
+             FOOTER BRAND
+        ================================================== -->
+
+        <div class="footer-brand">
+
+            <a
+                href="{% url 'home' %}"
+                class="logo footer-logo"
+            >
+                VOYAGO<span>.</span>
+            </a>
+
+            <p>
+                Discover places worth remembering.
+                Plan journeys worth living.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             EXPLORE
+        ================================================== -->
+
+        <div class="footer-column">
+
+            <h4>
+                Explore
+            </h4>
+
+
+            <a
+                href="{% url 'home' %}#destinations"
+            >
+                Destinations
+            </a>
+
+
+            <a
+                href="{% url 'plan_trip' %}"
+            >
+                Plan a Trip
+            </a>
+
+
+            <a
+                href="{% url 'about' %}"
+            >
+                About VOYAGO
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             DISCOVER
+        ================================================== -->
+
+        <div class="footer-column">
+
+            <h4>
+                Discover
+            </h4>
+
+
+            <!-- TRAVEL STORIES -->
+
+            <a
+                href="{% url 'travel_stories' %}"
+            >
+                Travel Stories
+            </a>
+
+
+            <!-- POPULAR STORIES -->
+
+            <a
+                href="{% url 'popular_stories' %}"
+            >
+                Popular Stories
+            </a>
+
+
+            <!-- TRAVEL GUIDE -->
+
+            <a
+                href="{% url 'travel_guide' %}"
+            >
+                Travel Guide
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             CONNECT
+        ================================================== -->
+
+        <div class="footer-column">
+
+            <h4>
+                Connect
+            </h4>
+
+
+            <a href="#">
+                Instagram
+            </a>
+
+
+            <a href="#">
+                Pinterest
+            </a>
+
+
+            <a href="#">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER BOTTOM
+    ====================================================== -->
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 VOYAGO. All rights reserved.
+        </span>
+
+
+        <span>
+            Discover. Plan. Go.
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="{% static 'js/script.js' %}"></script>
+
+
+{% block extra_js %}
+{% endblock %}
+
+
+</body>
+</html>

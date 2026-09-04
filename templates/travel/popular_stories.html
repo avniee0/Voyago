@@ -1,0 +1,335 @@
+{% extends "base.html" %}
+
+{% block title %}
+Popular Stories — VOYAGO
+{% endblock %}
+
+{% block body_class %}
+popular-stories-page
+{% endblock %}
+
+
+{% block content %}
+
+<section class="popular-stories-page">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="popular-hero">
+
+        <div class="popular-hero-inner">
+
+            <span class="section-eyebrow">
+                POPULAR STORIES
+            </span>
+
+            <h1>
+                Journeys worth<br>
+                remembering.
+            </h1>
+
+            <p>
+                The stories our travellers keep coming back to.
+                Get inspired for your next adventure.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         POPULAR STORIES
+    ====================================================== -->
+
+    <section class="popular-section">
+
+        <div class="popular-container">
+
+
+            <!-- 01 -->
+
+            <article class="popular-story">
+
+                <span class="popular-number">
+                    01
+                </span>
+
+
+                <div class="popular-image-wrapper">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=85"
+                        alt="Bali"
+                        class="popular-image"
+                    >
+
+                </div>
+
+
+                <div class="popular-content">
+
+                    <span class="story-category">
+                        ISLAND ESCAPE
+                    </span>
+
+                    <h2>
+                        Finding slow mornings in Bali
+                    </h2>
+
+                    <p>
+                        A relaxed journey through beaches,
+                        tropical landscapes and unforgettable
+                        island experiences.
+                    </p>
+
+                    <span class="story-location">
+                        Bali, Indonesia
+                    </span>
+
+                    <div class="popular-action">
+
+                        <a
+                            href="{% url 'explore' %}"
+                            class="trip-button"
+                        >
+                            Explore Bali →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 02 -->
+
+            <article class="popular-story">
+
+                <span class="popular-number">
+                    02
+                </span>
+
+
+                <div class="popular-image-wrapper">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=85"
+                        alt="Manali"
+                        class="popular-image"
+                    >
+
+                </div>
+
+
+                <div class="popular-content">
+
+                    <span class="story-category">
+                        MOUNTAIN ESCAPE
+                    </span>
+
+                    <h2>
+                        Chasing mountain air in Manali
+                    </h2>
+
+                    <p>
+                        Discover mountain roads, peaceful valleys
+                        and the natural beauty of Himachal Pradesh.
+                    </p>
+
+                    <span class="story-location">
+                        Manali, India
+                    </span>
+
+                    <div class="popular-action">
+
+                        <a
+                            href="{% url 'explore' %}"
+                            class="trip-button"
+                        >
+                            Explore Places →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 03 -->
+
+            <article class="popular-story">
+
+                <span class="popular-number">
+                    03
+                </span>
+
+
+                <div class="popular-image-wrapper">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=85"
+                        alt="Paris"
+                        class="popular-image"
+                    >
+
+                </div>
+
+
+                <div class="popular-content">
+
+                    <span class="story-category">
+                        CITY ESCAPE
+                    </span>
+
+                    <h2>
+                        Paris, one neighbourhood at a time
+                    </h2>
+
+                    <p>
+                        Discover charming streets, cafés and the
+                        quieter side of one of Europe's most iconic cities.
+                    </p>
+
+                    <span class="story-location">
+                        Paris, France
+                    </span>
+
+                    <div class="popular-action">
+
+                        <a
+                            href="{% url 'explore' %}"
+                            class="trip-button"
+                        >
+                            Explore Paris →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+
+            <article class="popular-story">
+
+                <span class="popular-number">
+                    04
+                </span>
+
+
+                <div class="popular-image-wrapper">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=900&q=85"
+                        alt="Santorini"
+                        class="popular-image"
+                    >
+
+                </div>
+
+
+                <div class="popular-content">
+
+                    <span class="story-category">
+                        MEDITERRANEAN
+                    </span>
+
+                    <h2>
+                        Blue horizons in Santorini
+                    </h2>
+
+                    <p>
+                        Whitewashed buildings, blue seas and
+                        slow Mediterranean evenings.
+                    </p>
+
+                    <span class="story-location">
+                        Santorini, Greece
+                    </span>
+
+                    <div class="popular-action">
+
+                        <a
+                            href="{% url 'explore' %}"
+                            class="trip-button"
+                        >
+                            Explore Greece →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 05 -->
+
+            <article class="popular-story">
+
+                <span class="popular-number">
+                    05
+                </span>
+
+
+                <div class="popular-image-wrapper">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=85"
+                        alt="Swiss Alps"
+                        class="popular-image"
+                    >
+
+                </div>
+
+
+                <div class="popular-content">
+
+                    <span class="story-category">
+                        MOUNTAIN JOURNEY
+                    </span>
+
+                    <h2>
+                        A week beneath the Swiss Alps
+                    </h2>
+
+                    <p>
+                        A journey filled with mountain views,
+                        peaceful villages and fresh alpine air.
+                    </p>
+
+                    <span class="story-location">
+                        Swiss Alps, Switzerland
+                    </span>
+
+                    <div class="popular-action">
+
+                        <a
+                            href="{% url 'explore' %}"
+                            class="trip-button"
+                        >
+                            Explore Switzerland →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

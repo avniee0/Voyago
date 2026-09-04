@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Trips — VOYAGO
+{% endblock %}
+
+
+{% block body_class %}
+trips-page
+{% endblock %}
+
+
+{% block content %}
+
+<section class="trips-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="trips-header">
+
+        <span class="section-eyebrow">
+            YOUR JOURNEYS
+        </span>
+
+        <h1>
+            My Trips
+        </h1>
+
+        <p>
+            Your planned journeys, all in one place.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         TRIPS
+    ====================================================== -->
+
+    <div class="trips-container">
+
+        {% if trips %}
+
+            {% for trip in trips %}
+
+                <article class="trip-card">
+
+
+                    <!-- =================================================
+                         JOURNEY HEADER
+                    ================================================== -->
+
+                    <div class="trip-card-top">
+
+                        <span class="trip-label">
+                            JOURNEY {{ forloop.counter }}
+                        </span>
+
+                        <h2>
+                            {{ trip.name }}
+                        </h2>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TRIP DATES
+                    ================================================== -->
+
+                    {% if trip.start_date or trip.end_date %}
+
+                        <div class="trip-dates">
+
+                            {% if trip.start_date %}
+
+                                <span>
+                                    {{ trip.start_date|date:"d M Y" }}
+                                </span>
+
+                            {% endif %}
+
+
+                            {% if trip.start_date and trip.end_date %}
+
+                                <span>
+                                    —
+                                </span>
+
+                            {% endif %}
+
+
+                            {% if trip.end_date %}
+
+                                <span>
+                                    {{ trip.end_date|date:"d M Y" }}
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endif %}
+
+
+                    <!-- =================================================
+                         DESTINATIONS
+                    ================================================== -->
+
+                    <div class="trip-info">
+
+                        {% for place in trip.places.all %}
+
+                            <div class="trip-destination">
+
+                                {% if place.destination.image %}
+
+                                    <img
+                                        src="{{ place.destination.image.url }}"
+                                        alt="{{ place.destination.name }}"
+                                        class="trip-destination-image"
+                                    >
+
+                                {% endif %}
+
+
+                                <div class="trip-destination-details">
+
+                                    <span class="destination-label">
+                                        DESTINATION
+                                    </span>
+
+                                    <h3>
+                                        {{ place.destination.name }}
+                                    </h3>
+
+                                    <p>
+                                        {{ place.destination.country }}
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        {% empty %}
+
+                            <p class="no-destination">
+                                No destination added yet.
+                            </p>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- =================================================
+                         CARD FOOTER
+                    ================================================== -->
+
+                    <div class="trip-card-bottom">
+
+                        <span class="trip-count">
+
+                            {{ trip.places.count }}
+
+                            {% if trip.places.count == 1 %}
+
+                                destination
+
+                            {% else %}
+
+                                destinations
+
+                            {% endif %}
+
+                        </span>
+
+
+                        <!-- =================================================
+                             TRIP ACTIONS
+                        ================================================== -->
+
+                        <div class="trip-actions">
+
+                            <a
+                                href="{% url 'trip_detail' trip.id %}"
+                                class="trip-view-button"
+                            >
+                                View Trip
+                            </a>
+
+
+                            <a
+                                href="{% url 'edit_trip' trip.id %}"
+                                class="trip-edit-button"
+                            >
+                                Edit
+                            </a>
+
+
+                            <a
+                                href="{% url 'delete_trip' trip.id %}"
+                                class="trip-delete-button"
+                            >
+                                Delete
+                            </a>
+
+
+                            <a
+                                href="{% url 'plan_trip' %}"
+                                class="trip-button"
+                            >
+                                Plan Another Journey
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <!-- =================================================
+                 EMPTY STATE
+            ================================================== -->
+
+            <div class="empty-trips">
+
+                <span class="section-eyebrow">
+                    NO JOURNEYS YET
+                </span>
+
+                <h2>
+                    Your next adventure starts here.
+                </h2>
+
+                <p>
+                    You haven't created a journey yet.
+                    Start exploring and build your first trip.
+                </p>
+
+                <a
+                    href="{% url 'plan_trip' %}"
+                    class="nav-cta"
+                >
+                    Plan a Journey
+                </a>
+
+            </div>
+
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

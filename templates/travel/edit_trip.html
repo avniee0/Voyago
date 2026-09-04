@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Trip — VOYAGO
+{% endblock %}
+
+{% block body_class %}
+edit-trip-page
+{% endblock %}
+
+{% block content %}
+
+<section class="edit-trip-section">
+
+    <div class="edit-trip-container">
+
+        <!-- =====================================================
+             PAGE HEADER
+        ====================================================== -->
+
+        <div class="edit-trip-header">
+
+            <span class="section-eyebrow">
+                YOUR JOURNEY
+            </span>
+
+            <h1>
+                Edit Your Trip
+            </h1>
+
+            <p>
+                Update your journey details and destinations.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             ERROR
+        ====================================================== -->
+
+        {% if error %}
+
+            <div class="edit-trip-error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+
+        <!-- =====================================================
+             EDIT CARD
+        ====================================================== -->
+
+        <div class="edit-trip-card">
+
+            <form
+                method="POST"
+                class="edit-trip-form"
+            >
+
+                {% csrf_token %}
+
+
+                <!-- =================================================
+                     TRIP NAME
+                ================================================== -->
+
+                <div class="edit-form-group">
+
+                    <label for="trip_name">
+                        Trip Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="trip_name"
+                        name="trip_name"
+                        value="{{ trip.name }}"
+                        placeholder="Enter your trip name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- =================================================
+                     DATES
+                ================================================== -->
+
+                <div class="edit-form-row">
+
+                    <div class="edit-form-group">
+
+                        <label for="start_date">
+                            Start Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="start_date"
+                            name="start_date"
+                            value="{{ trip.start_date|date:'Y-m-d' }}"
+                        >
+
+                    </div>
+
+
+                    <div class="edit-form-group">
+
+                        <label for="end_date">
+                            End Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="end_date"
+                            name="end_date"
+                            value="{{ trip.end_date|date:'Y-m-d' }}"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     DESTINATIONS
+                ================================================== -->
+
+                <div class="edit-destinations-section">
+
+                    <div class="edit-destinations-heading">
+
+                        <div>
+
+                            <span class="destination-label">
+                                YOUR DESTINATIONS
+                            </span>
+
+                            <h2>
+                                Where are you going?
+                            </h2>
+
+                        </div>
+
+                        <span class="destination-selection-count">
+                            Select one or more
+                        </span>
+
+                    </div>
+
+
+                    <div class="edit-destinations-grid">
+
+                        {% for destination in destinations %}
+
+                            <label
+                                class="edit-destination-option"
+                            >
+
+                                <input
+                                    type="checkbox"
+                                    name="destinations"
+                                    value="{{ destination.id }}"
+
+                                    {% for selected in selected_destinations %}
+
+                                        {% if selected.destination.id == destination.id %}
+                                            checked
+                                        {% endif %}
+
+                                    {% endfor %}
+                                >
+
+
+                                <span class="destination-checkmark">
+                                    ✓
+                                </span>
+
+
+                                {% if destination.image %}
+
+                                    <img
+                                        src="{{ destination.image.url }}"
+                                        alt="{{ destination.name }}"
+                                        class="edit-destination-image"
+                                    >
+
+                                {% endif %}
+
+
+                                <span class="edit-destination-content">
+
+                                    <strong>
+                                        {{ destination.name }}
+                                    </strong>
+
+                                    <small>
+                                        {{ destination.country }}
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ACTIONS
+                ================================================== -->
+
+                <div class="edit-trip-actions">
+
+                    <a
+                        href="{% url 'my_trips' %}"
+                        class="edit-cancel-button"
+                    >
+                        Cancel
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="edit-save-button"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
