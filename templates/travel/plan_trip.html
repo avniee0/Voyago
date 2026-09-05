@@ -155,12 +155,64 @@ plan-page
                         id="destination-{{ destination.id }}"
                     >
 
+
+                    <!-- DESTINATION IMAGE -->
+
                     <div class="destination-card-image">
 
-                        {% if destination.image %}
+                        {% if destination.name == "Amalfi Coast" %}
 
                             <img
-                                src="{{ destination.image.url }}"
+                                src="{% static 'images/amalfi.jpg' %}"
+                                alt="{{ destination.name }}"
+                            >
+
+                        {% elif destination.name == "Bali" %}
+
+                            <img
+                                src="{% static 'images/bali.jpg' %}"
+                                alt="{{ destination.name }}"
+                            >
+
+                        {% elif destination.name == "Kyoto" %}
+
+                            <img
+                                src="{% static 'images/kyoto.jpg' %}"
+                                alt="{{ destination.name }}"
+                            >
+
+                        {% elif destination.name == "Manali" %}
+
+                            <img
+                                src="{% static 'images/manali.jpg' %}"
+                                alt="{{ destination.name }}"
+                            >
+
+                        {% elif destination.name == "Marrakech" %}
+
+                            <img
+                                src="{% static 'images/marrakech.jpg' %}"
+                                alt="{{ destination.name }}"
+                            >
+
+                        {% elif destination.name == "Paris" %}
+
+                            <img
+                                src="{% static 'images/paris.jpg' %}"
+                                alt="{{ destination.name }}"
+                            >
+
+                        {% elif destination.name == "Santorini" %}
+
+                            <img
+                                src="{% static 'images/santorini.jpg' %}"
+                                alt="{{ destination.name }}"
+                            >
+
+                        {% elif destination.name == "Swiss Alps" %}
+
+                            <img
+                                src="{% static 'images/swiss-alps.jpg' %}"
                                 alt="{{ destination.name }}"
                             >
 
@@ -172,12 +224,15 @@ plan-page
 
                         {% endif %}
 
+
                         <span class="selection-mark">
                             ✓
                         </span>
 
                     </div>
 
+
+                    <!-- CARD CONTENT -->
 
                     <div class="planner-card-content">
 
