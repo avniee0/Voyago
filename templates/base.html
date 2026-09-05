@@ -73,7 +73,9 @@
     <nav class="navbar">
 
 
-        <!-- LOGO -->
+        <!-- =================================================
+             LOGO
+        ================================================== -->
 
         <a
             href="{% url 'home' %}"
@@ -131,11 +133,64 @@
                 About
             </a>
 
+
+            <!-- =================================================
+                 MOBILE NAV ACTIONS
+            ================================================== -->
+
+            <div class="mobile-nav-actions">
+
+                {% if user.is_authenticated %}
+
+                    <!-- MY TRIPS -->
+
+                    <a
+                        href="{% url 'my_trips' %}"
+                        class="login-link {% if request.resolver_match.url_name == 'my_trips' or request.resolver_match.url_name == 'trip_detail' or request.resolver_match.url_name == 'edit_trip' or request.resolver_match.url_name == 'delete_trip' %}active{% endif %}"
+                    >
+                        My Trips
+                    </a>
+
+
+                    <!-- LOG OUT -->
+
+                    <a
+                        href="{% url 'logout' %}"
+                        class="nav-cta"
+                    >
+                        Log Out
+                    </a>
+
+                {% else %}
+
+                    <!-- SIGN IN -->
+
+                    <a
+                        href="{% url 'login' %}"
+                        class="login-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}"
+                    >
+                        Sign In
+                    </a>
+
+
+                    <!-- GET STARTED -->
+
+                    <a
+                        href="{% url 'register' %}"
+                        class="nav-cta {% if request.resolver_match.url_name == 'register' %}active{% endif %}"
+                    >
+                        Get Started
+                    </a>
+
+                {% endif %}
+
+            </div>
+
         </div>
 
 
         <!-- =================================================
-             NAV ACTIONS
+             DESKTOP NAV ACTIONS
         ================================================== -->
 
         <div class="nav-actions">
@@ -187,7 +242,9 @@
         </div>
 
 
-        <!-- MOBILE MENU -->
+        <!-- =================================================
+             MOBILE MENU BUTTON
+        ================================================== -->
 
         <button
             class="mobile-menu"
@@ -293,8 +350,6 @@
             </h4>
 
 
-            <!-- TRAVEL STORIES -->
-
             <a
                 href="{% url 'travel_stories' %}"
             >
@@ -302,16 +357,12 @@
             </a>
 
 
-            <!-- POPULAR STORIES -->
-
             <a
                 href="{% url 'popular_stories' %}"
             >
                 Popular Stories
             </a>
 
-
-            <!-- TRAVEL GUIDE -->
 
             <a
                 href="{% url 'travel_guide' %}"
