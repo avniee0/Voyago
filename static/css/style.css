@@ -2153,7 +2153,7 @@ input {
 
     background: var(--ivory);
 
-    color: var(--charcoal);
+    color: #000000;
 }
 
 
@@ -2173,7 +2173,7 @@ input {
 /* LEFT SIDE */
 
 .about-hero-left {
-    color: var(--charcoal);
+    color: #000000;
 }
 
 .about-page-hero .section-label {
@@ -2187,7 +2187,7 @@ input {
 
     margin: 0;
 
-    color: var(--charcoal);
+    color: #000000;
 
     font-family: var(--serif);
 
@@ -2214,13 +2214,13 @@ input {
 
     padding-top: 65px;
 
-    color: var(--charcoal);
+    color: #000000;
 }
 
 .about-hero-right h2 {
     margin: 0;
 
-    color: var(--charcoal);
+    color: #000000;
 
     font-family: var(--serif);
 
@@ -2255,7 +2255,7 @@ input {
 
     background: var(--paper);
 
-    color: var(--charcoal);
+    color: #000000;
 }
 
 .about-story-grid {
@@ -2269,7 +2269,7 @@ input {
 }
 
 .about-story-heading {
-    color: var(--charcoal);
+    color: #000000;
 }
 
 .about-story-heading .section-label {
@@ -2281,7 +2281,7 @@ input {
 
     margin: 0;
 
-    color: var(--charcoal);
+    color: #000000;
 
     font-family: var(--serif);
 
@@ -2308,7 +2308,7 @@ input {
 
     padding-top: 65px;
 
-    color: var(--charcoal);
+    color: #000000;
 }
 
 .about-story-copy p {
@@ -2328,7 +2328,7 @@ input {
 
     margin-bottom: 30px;
 
-    color: var(--charcoal);
+    color: #000000;
 
     font-family: var(--serif);
 
@@ -2471,7 +2471,7 @@ input {
 
     background: var(--sand);
 
-    color: var(--charcoal);
+    color: #000000;
 }
 
 .about-final-content {
@@ -2489,7 +2489,7 @@ input {
 
     margin: 0;
 
-    color: var(--charcoal);
+    color: #000000;
 
     font-family: var(--serif);
 
@@ -2511,7 +2511,6 @@ input {
 .about-final .primary-button {
     margin-top: 40px;
 }
-
 /* =========================================================
    ABOUT PAGE — MOBILE
 ========================================================= */
