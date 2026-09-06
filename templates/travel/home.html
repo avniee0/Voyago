@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 VOYAGO — Discover. Plan. Go.
@@ -174,10 +175,61 @@ VOYAGO — Discover. Plan. Go.
 
                 <div class="destination-image">
 
-                    {% if destination.image %}
+                    <!-- STATIC DESTINATION IMAGES -->
+
+                    {% if destination.name == "Amalfi Coast" %}
 
                         <img
-                            src="{{ destination.image.url }}"
+                            src="{% static 'images/amalfi.jpg' %}"
+                            alt="{{ destination.name }}"
+                        >
+
+                    {% elif destination.name == "Bali" %}
+
+                        <img
+                            src="{% static 'images/bali.jpg' %}"
+                            alt="{{ destination.name }}"
+                        >
+
+                    {% elif destination.name == "Kyoto" %}
+
+                        <img
+                            src="{% static 'images/kyoto.jpg' %}"
+                            alt="{{ destination.name }}"
+                        >
+
+                    {% elif destination.name == "Manali" %}
+
+                        <img
+                            src="{% static 'images/manali.jpg' %}"
+                            alt="{{ destination.name }}"
+                        >
+
+                    {% elif destination.name == "Marrakech" %}
+
+                        <img
+                            src="{% static 'images/marrakech.jpg' %}"
+                            alt="{{ destination.name }}"
+                        >
+
+                    {% elif destination.name == "Paris" %}
+
+                        <img
+                            src="{% static 'images/paris.jpg' %}"
+                            alt="{{ destination.name }}"
+                        >
+
+                    {% elif destination.name == "Santorini" %}
+
+                        <img
+                            src="{% static 'images/santorini.jpg' %}"
+                            alt="{{ destination.name }}"
+                        >
+
+                    {% elif destination.name == "Swiss Alps" %}
+
+                        <img
+                            src="{% static 'images/swiss-alps.jpg' %}"
                             alt="{{ destination.name }}"
                         >
 
@@ -189,11 +241,14 @@ VOYAGO — Discover. Plan. Go.
 
                     {% endif %}
 
+
                     <div class="image-overlay"></div>
+
 
                     <span class="destination-category">
                         {{ destination.get_category_display }}
                     </span>
+
 
                     <button
                         class="favorite-button"
@@ -201,6 +256,7 @@ VOYAGO — Discover. Plan. Go.
                     >
                         ♡
                     </button>
+
 
                     <div class="destination-info">
 
@@ -341,6 +397,7 @@ VOYAGO — Discover. Plan. Go.
 
             </div>
 
+
             <div class="feature reveal">
 
                 <span class="feature-number">
@@ -358,6 +415,7 @@ VOYAGO — Discover. Plan. Go.
 
             </div>
 
+
             <div class="feature reveal">
 
                 <span class="feature-number">
@@ -374,6 +432,7 @@ VOYAGO — Discover. Plan. Go.
                 </p>
 
             </div>
+
 
             <div class="feature reveal">
 
